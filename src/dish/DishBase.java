@@ -1,3 +1,4 @@
+package dish;
 public abstract class DishBase {
 
   private String name;
