@@ -9,7 +9,7 @@ import dish.Menu;
 
 public abstract class Restaurant {
 
-  Calculation calculation;
+  private Calculation calculation;
 
   public Restaurant(Calculation calc) {
     calculation = calc;
