@@ -1,25 +1,23 @@
 package restaurant;
 
-import java.util.ArrayList;
-import java.util.List;
 import calclation.IzakayaCalc;
-import dish.Menu;
+import dish.Dish.Menu;
 
 public class Izakaya extends Restaurant {
 
   public Izakaya() {
     super(new IzakayaCalc());
-    System.out.println("陽気な居酒屋へようこそ！！\n");
-    System.out.println(getMenu() + " から１つずつご注文ください。");
-    System.out.println("（以上の場合は e を入力してください。）\n");
+    System.out.println("陽気な居酒屋へようこそ！！");
+    System.out.println("ご注文は何にしましょう！？\n");
   }
 
   @Override
-  public List<String> getMenu() {
-    List<String> menu = new ArrayList<String>();
-    menu.add(Menu.HIGHBALL.getName());
-    menu.add(Menu.EDAMAME.getName());
-    menu.add(Menu.CHICKEN.getName());
-    return menu;
+  public void showMenu() {
+    System.out.println("=========================================================");
+    System.out.println("  " +Menu.HIGHBALL.getItemName());
+    System.out.println("  " +Menu.EDAMAME.getItemName());
+    System.out.println("  " +Menu.CHICKEN.getItemName());
+    System.out.println("=========================================================");
+    System.out.print("【ご注文】：");
   }
 }

@@ -1,11 +1,9 @@
 package restaurant;
 
-import java.util.List;
-import Factory.DishFactory;
-import Factory.Factory;
+import java.util.Scanner;
 import calclation.Calculation;
 import dish.Dish;
-import dish.Menu;
+import dish.Dish.Menu;
 
 public abstract class Restaurant {
 
@@ -13,24 +11,42 @@ public abstract class Restaurant {
 
   public Restaurant(Calculation calc) {
     calculation = calc;
-    System.out.println("\nカラン♪\nいらっしゃいませ。\n");
+    System.out.println("\n♪♪カラン♪♪\nいらっしゃいませ。\n");
   }
 
-  public abstract List<String> getMenu();
+  public abstract void showMenu();
 
-  public  void addOrder(String order) {
+  public void addOrder() {
 
-    Menu orderMenu = Menu.getMenu(order);
+    @SuppressWarnings("resource")
+    Scanner scan = new Scanner(System.in);
 
-    Factory factory = new DishFactory();
-    Dish dish = factory.create(orderMenu.getName(),orderMenu.getPrice());
+    boolean isContinue = true;
+    while (isContinue) {
+      // メニュー一覧の表示
+      showMenu();
 
-    calculation.addPrice(dish);
-    System.out.println("\n" + dish.getName() + " ですね。\n");
+      // 入力値よりメニューの特定
+      Menu order = Menu.getMenu(scan.next());
+
+      // 注文は以上
+      if (order == null) {
+      // メニュー一覧と一致なし
+        System.out.println("\n申し訳ございません、もう一度お願いいたします。\n");
+      } else if (order.equals(Menu.FINISH)) {
+          getCalc();
+          isContinue = false;
+      } else {
+      // メニュー一覧と一致（注文に追加）
+        Dish dish = new Dish(order);
+        calculation.addPrice(dish);
+        System.out.println("\n" + dish.getName() + " ですね。\n\n他にご注文はございますか？");
+      }
+    }
   };
 
-  public  void getCalc() {
-    calculation.getFinalTotalPrice();
+  public void getCalc() {
+    calculation.getFinalTotalPrice(calculation);
   }
 
 }

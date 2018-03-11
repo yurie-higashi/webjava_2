@@ -1,12 +1,15 @@
 package dish;
+
+import dish.Dish.Menu;
+
 public abstract class DishBase {
 
   private String name;
   private int price;
 
-  public DishBase (String name, int price) {
-    this.name = name;
-    this.price = price;
+  public DishBase (Menu menu) {
+    this.name = menu.getItemName();
+    this.price = menu.getItemPrice();
   }
 
   public String getName() {
@@ -16,5 +19,4 @@ public abstract class DishBase {
   public int getPrice() {
     return this.price;
   }
-
 }

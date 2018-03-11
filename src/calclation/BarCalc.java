@@ -7,6 +7,10 @@ public class BarCalc extends Calculation {
   // サービス料込み価格
   public void setFinalTotalPrice() {
     finalTotalPrice = (int) (getTaxPrice() * service);
+  }
 
+  @Override
+  public void addExplain() {
+    System.out.print("  サービス料10%を追加しまして、");
   }
 }

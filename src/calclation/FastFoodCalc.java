@@ -11,6 +11,10 @@ public class FastFoodCalc extends Calculation {
     }
   }
 
-
-
+  @Override
+  public void addExplain() {
+    if (getTaxPrice() > 600) {
+      System.out.print("  セット割引で100円引きになりまして、");
+    }
+  }
 }

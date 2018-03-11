@@ -8,4 +8,11 @@ public class IzakayaCalc extends Calculation {
   public void setFinalTotalPrice() {
     finalTotalPrice = (int) (getTaxPrice() + otoshi);
   }
+
+  @Override
+  public void addExplain() {
+    System.out.print("  お通し台300円を追加しまして、");
+  }
+
+
 }
