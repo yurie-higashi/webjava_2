@@ -29,17 +29,17 @@ public class GoRestaurant {
     switch(selectedRestaurant) {
       case "0":
         Bar bar = new Bar();
-        getOrder(bar);
+        order(bar);
         break;
 
       case "1":
         Izakaya izakaya = new Izakaya();
-        getOrder(izakaya);
+        order(izakaya);
         break;
 
       case "2":
         FastFood fastFood = new FastFood();
-        getOrder(fastFood);
+        order(fastFood);
         break;
 
       default:
@@ -47,7 +47,7 @@ public class GoRestaurant {
     }
   }
 
-  private void getOrder(Restaurant res) {
+  private void order(Restaurant res) {
     res.addOrder();
   }
 
