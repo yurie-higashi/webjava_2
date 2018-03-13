@@ -11,7 +11,7 @@ public class IzakayaCalc extends Calculation {
 
   @Override
   public void addExplain() {
-    System.out.print("  お通し台300円を追加しまして、");
+    System.out.print("  お通し代300円を追加しまして、");
   }
 
 

@@ -1,7 +1,11 @@
 package restaurant;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import calclation.BarCalc;
-import dish.Dish.Menu;
+import dish.DishBase;
+import dish.Drink;
 
 public class Bar extends Restaurant {
 
@@ -9,15 +13,17 @@ public class Bar extends Restaurant {
     super(new BarCalc());
     System.out.println("素敵なバーへようこそ！！");
     System.out.println("ご注文はいかがなさいますか？\n");
+    addOrder();
   }
 
-  @Override
-  public void showMenu() {
-    System.out.println("=========================================================");
-    System.out.println("  " + Menu.WINE.getItemName());
-    System.out.println("  " + Menu.BEER.getItemName());
-    System.out.println("  " + Menu.COCKTAIL.getItemName());
-    System.out.println("=========================================================");
-    System.out.print("【ご注文】：");
+  public void makeDish() {
+    List<DishBase> barList = new ArrayList<DishBase>();
+    Drink wine = new Drink("ワイン",800);
+    Drink beer = new Drink("ビール",700);
+    Drink cocktail = new Drink("カクテル",900);
+
+    Collections.addAll(barList,wine,beer,cocktail);
+    this.dishList = barList;
   }
+
 }

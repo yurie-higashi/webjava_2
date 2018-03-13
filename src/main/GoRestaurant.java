@@ -3,7 +3,6 @@ import java.util.Scanner;
 import restaurant.Bar;
 import restaurant.FastFood;
 import restaurant.Izakaya;
-import restaurant.Restaurant;
 
 public class GoRestaurant {
 
@@ -17,38 +16,31 @@ public class GoRestaurant {
     System.out.print("【選択】：");
 
     GoRestaurant restaurant =  new GoRestaurant();
+    String selectedRestaurant = restaurant.getScan();
 
     // お店に入る
-    restaurant.intoRestrant();
+    restaurant.intoRestrant(selectedRestaurant);
 
   }
 
-  private void intoRestrant() {
-    String selectedRestaurant = getScan();
+  private void intoRestrant(String selectedRestaurant) {
 
     switch(selectedRestaurant) {
       case "0":
-        Bar bar = new Bar();
-        order(bar);
+        new Bar();
         break;
 
       case "1":
-        Izakaya izakaya = new Izakaya();
-        order(izakaya);
+        new Izakaya();
         break;
 
       case "2":
-        FastFood fastFood = new FastFood();
-        order(fastFood);
+        new FastFood();
         break;
 
       default:
         System.out.println("（あれ、間違えたのかな…？）\nまたのお越しをお待ちしております。");
     }
-  }
-
-  private void order(Restaurant res) {
-    res.addOrder();
   }
 
   private String getScan() {

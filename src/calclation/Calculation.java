@@ -1,7 +1,7 @@
 package calclation;
 import java.util.ArrayList;
 import java.util.List;
-import dish.Dish;
+import dish.DishBase;
 
 public abstract class Calculation {
 
@@ -9,9 +9,9 @@ public abstract class Calculation {
   int totalPrice = 0;
   double taxPrice = 0;
   private double tax = 1.08;
-  private List<Dish> orderList = new ArrayList<Dish>();
+  public List<DishBase> orderList = new ArrayList<DishBase>();
 
-  public void addPrice(Dish dish) {
+  public void addPrice(DishBase dish) {
       totalPrice = totalPrice + dish.getPrice();
       orderList.add(dish);
   }
@@ -30,6 +30,9 @@ public abstract class Calculation {
     setFinalTotalPrice();
     System.out.println("\n******************************************************\n");
     System.out.println("  ご注文ありがとうございました。");
+    for (DishBase order :orderList) {
+      System.out.println("  " + order.getName() + " : " + order.getPrice() + "円\n");
+    }
     calc.addExplain();
     System.out.println("合計 " + finalTotalPrice + " 円でございます。");
     System.out.println("  またのお越しをお待ちしております。\n");
