@@ -14,7 +14,6 @@ public class Izakaya extends Restaurant {
     super(new IzakayaCalc());
     System.out.println("陽気な居酒屋へようこそ！！");
     System.out.println("ご注文は何にしましょう！？\n");
-    addOrder();
   }
 
   public void makeDish() {
@@ -25,6 +24,7 @@ public class Izakaya extends Restaurant {
 
     Collections.addAll(izakayaList,highball,edamame,chicken);
     this.dishList = izakayaList;
+    addDishNameList();
   }
 
 }

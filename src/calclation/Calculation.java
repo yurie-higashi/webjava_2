@@ -29,9 +29,9 @@ public abstract class Calculation {
   public void getFinalTotalPrice(Calculation calc) {
     setFinalTotalPrice();
     System.out.println("\n******************************************************\n");
-    System.out.println("  ご注文ありがとうございました。");
+    System.out.println("  ご注文ありがとうございました。\n");
     for (DishBase order :orderList) {
-      System.out.println("  " + order.getName() + " : " + order.getPrice() + "円\n");
+      System.out.println("  " + order.getName() + " : " + order.getPrice() + "円");
     }
     calc.addExplain();
     System.out.println("合計 " + finalTotalPrice + " 円でございます。");

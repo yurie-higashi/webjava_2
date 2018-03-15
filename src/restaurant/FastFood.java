@@ -14,7 +14,6 @@ public class FastFood extends Restaurant {
     super(new FastFoodCalc());
     System.out.println("愉快なファーストフード店へようこそ！！");
     System.out.println("ご注文お伺いしまーす！\n");
-    addOrder();
   }
 
   public void makeDish() {
@@ -25,6 +24,7 @@ public class FastFood extends Restaurant {
 
     Collections.addAll(fastFoodList,potato,coke,humburger);
     this.dishList = fastFoodList;
+    addDishNameList();
   }
 
 }

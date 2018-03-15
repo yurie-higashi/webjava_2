@@ -3,6 +3,7 @@ import java.util.Scanner;
 import restaurant.Bar;
 import restaurant.FastFood;
 import restaurant.Izakaya;
+import restaurant.Restaurant;
 
 public class GoRestaurant {
 
@@ -25,22 +26,35 @@ public class GoRestaurant {
 
   private void intoRestrant(String selectedRestaurant) {
 
+    Restaurant restaurant = null;
+
     switch(selectedRestaurant) {
       case "0":
-        new Bar();
+        restaurant = new Bar();
         break;
 
       case "1":
-        new Izakaya();
+        restaurant = new Izakaya();
         break;
 
       case "2":
-        new FastFood();
+        restaurant = new FastFood();
         break;
 
       default:
         System.out.println("（あれ、間違えたのかな…？）\nまたのお越しをお待ちしております。");
+        return;
     }
+
+    // メニューを見る
+    restaurant.showMenu();
+    // 注文する
+    restaurant.addOrder();
+    // 食べる
+    restaurant.eat();
+    // お会計をする
+    restaurant.getCalc();
+
   }
 
   private String getScan() {

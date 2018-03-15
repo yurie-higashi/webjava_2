@@ -13,7 +13,6 @@ public class Bar extends Restaurant {
     super(new BarCalc());
     System.out.println("素敵なバーへようこそ！！");
     System.out.println("ご注文はいかがなさいますか？\n");
-    addOrder();
   }
 
   public void makeDish() {
@@ -24,6 +23,8 @@ public class Bar extends Restaurant {
 
     Collections.addAll(barList,wine,beer,cocktail);
     this.dishList = barList;
+    addDishNameList();
+
   }
 
 }
