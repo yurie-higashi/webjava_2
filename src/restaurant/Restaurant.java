@@ -23,8 +23,25 @@ public abstract class Restaurant {
   public void addOrder() {
     boolean isContinue = true;
     while (isContinue) {
-      // オーダーを受ける
-      isContinue = order();
+    @SuppressWarnings("resource")
+    Scanner scan = new Scanner(System.in);
+    String order = scan.next();
+    if (order == null || !dishNameList.contains(order)) {
+      System.out.println("\n申し訳ございません、もう一度お願いいたします。\n");
+    } else if (order.equals(finish)) {
+      // 注文終わり
+      isContinue = false;
+    } else {
+      for (DishBase dish : dishList) {
+        if (order.equals(dish.getName())) {
+          System.out.println("\n" + dish.getName() + " ですね。\n\n他にご注文はございますか？");
+          calculation.addPrice(dish);
+        }
+      }
+    }
+    // 注文を続ける
+    showMenu();
+    isContinue = true;
     }
   };
 
@@ -40,29 +57,6 @@ public abstract class Restaurant {
     System.out.println("=========================================================");
     System.out.print("【ご注文】：");
   };
-
-  // オーダーを受ける
-  public boolean order() {
-    @SuppressWarnings("resource")
-    Scanner scan = new Scanner(System.in);
-    String order = scan.next();
-    if (order == null || !dishNameList.contains(order)) {
-      System.out.println("\n申し訳ございません、もう一度お願いいたします。\n");
-    } else if (order.equals(finish)) {
-      // 注文終わり
-      return false;
-    } else {
-      for (DishBase dish : dishList) {
-        if (order.equals(dish.getName())) {
-          System.out.println("\n" + dish.getName() + " ですね。\n\n他にご注文はございますか？");
-          calculation.addPrice(dish);
-        }
-      }
-    }
-    // 注文を続ける
-    showMenu();
-    return true;
-  }
 
   // 食事をする
   public void eat() {
